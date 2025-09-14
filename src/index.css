@@ -29,20 +29,28 @@ All colors MUST be HSL.
     --accent: 43 96% 56%;
     --accent-foreground: 222.2 47.4% 11.2%;
 
-    /* Empowerment gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(262 83% 68%));
-    --gradient-success: linear-gradient(135deg, hsl(var(--secondary)), hsl(152 69% 45%));
-    --gradient-hero: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--secondary)));
+    /* Professional gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(262 83% 58%) 0%, hsl(262 73% 65%) 50%, hsl(252 83% 72%) 100%);
+    --gradient-success: linear-gradient(135deg, hsl(152 69% 35%) 0%, hsl(152 59% 42%) 50%, hsl(142 69% 48%) 100%);
+    --gradient-hero: linear-gradient(135deg, hsl(262 83% 58%) 0%, hsl(207 73% 57%) 35%, hsl(152 69% 35%) 100%);
+    --gradient-subtle: linear-gradient(135deg, hsl(var(--background)) 0%, hsl(220 14% 96%) 100%);
+    --gradient-card: linear-gradient(135deg, hsl(var(--card)) 0%, hsl(220 14% 98%) 100%);
+    
+    /* Professional overlays */
+    --overlay-hero: linear-gradient(135deg, rgba(139, 92, 246, 0.15) 0%, rgba(16, 185, 129, 0.1) 100%);
+    --overlay-section: linear-gradient(180deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 250, 252, 0.98) 100%);
     
     /* Achievement colors */
     --achievement-bronze: 30 100% 50%;
     --achievement-silver: 0 0% 75%;
     --achievement-gold: 43 96% 56%;
     
-    /* Shadows */
-    --shadow-empowerment: 0 10px 30px -10px hsl(var(--primary) / 0.3);
-    --shadow-success: 0 8px 24px -8px hsl(var(--secondary) / 0.25);
-    --shadow-soft: 0 4px 16px -4px hsl(222.2 84% 4.9% / 0.1);
+    /* Professional shadows */
+    --shadow-empowerment: 0 20px 40px -12px hsl(var(--primary) / 0.25);
+    --shadow-success: 0 16px 32px -8px hsl(var(--secondary) / 0.2);
+    --shadow-soft: 0 8px 32px -8px hsl(222.2 84% 4.9% / 0.12);
+    --shadow-elegant: 0 4px 24px -4px hsl(222.2 84% 4.9% / 0.08);
+    --shadow-floating: 0 12px 48px -12px hsl(222.2 84% 4.9% / 0.18);
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;

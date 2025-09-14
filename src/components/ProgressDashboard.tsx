@@ -5,8 +5,13 @@ import { Star, Trophy, Target, Book, Users } from "lucide-react";
 
 export const ProgressDashboard = () => {
   return (
-    <section className="py-24 bg-muted/30">
-      <div className="container mx-auto px-4">
+    <section className="py-24 bg-gradient-subtle relative overflow-hidden">
+      {/* Professional background pattern */}
+      <div className="absolute inset-0 bg-overlay-section" />
+      <div className="absolute top-10 left-1/4 w-72 h-72 bg-primary/3 rounded-full blur-3xl animate-float" />
+      <div className="absolute bottom-10 right-1/4 w-80 h-80 bg-secondary/3 rounded-full blur-3xl animate-float" style={{ animationDelay: '1.5s' }} />
+      
+      <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
             Track Your Journey to
@@ -22,7 +27,7 @@ export const ProgressDashboard = () => {
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
             {/* Main Progress Card */}
-            <Card className="lg:col-span-2 shadow-soft border-0">
+            <Card className="lg:col-span-2 shadow-floating border-0 bg-gradient-card backdrop-blur-sm animate-fade-in">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2 text-2xl">
                   <Book className="h-6 w-6 text-primary" />
@@ -59,7 +64,7 @@ export const ProgressDashboard = () => {
             </Card>
 
             {/* Achievements */}
-            <Card className="shadow-soft border-0">
+            <Card className="shadow-floating border-0 bg-gradient-card backdrop-blur-sm animate-fade-in" style={{ animationDelay: '0.2s' }}>
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <Trophy className="h-5 w-5 text-accent" />
@@ -98,30 +103,30 @@ export const ProgressDashboard = () => {
 
           {/* Quick Stats */}
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-            <Card className="text-center shadow-soft border-0 bg-gradient-primary text-white">
+            <Card className="text-center shadow-floating border-0 bg-gradient-primary text-white hover:-translate-y-1 transition-all duration-300 animate-scale-in">
               <CardContent className="pt-6">
-                <div className="text-3xl font-bold mb-2">15</div>
+                <div className="text-3xl font-bold mb-2 animate-float">15</div>
                 <div className="text-sm opacity-90">Lessons Completed</div>
               </CardContent>
             </Card>
             
-            <Card className="text-center shadow-soft border-0 bg-gradient-success text-white">
+            <Card className="text-center shadow-floating border-0 bg-gradient-success text-white hover:-translate-y-1 transition-all duration-300 animate-scale-in" style={{ animationDelay: '0.1s' }}>
               <CardContent className="pt-6">
-                <div className="text-3xl font-bold mb-2">₹2,340</div>
+                <div className="text-3xl font-bold mb-2 animate-float" style={{ animationDelay: '0.3s' }}>₹2,340</div>
                 <div className="text-sm opacity-90">Total Earnings</div>
               </CardContent>
             </Card>
             
-            <Card className="text-center shadow-soft border-0 bg-card">
+            <Card className="text-center shadow-floating border-0 bg-gradient-card hover:-translate-y-1 transition-all duration-300 animate-scale-in" style={{ animationDelay: '0.2s' }}>
               <CardContent className="pt-6">
-                <div className="text-3xl font-bold mb-2 text-accent">7</div>
+                <div className="text-3xl font-bold mb-2 text-accent animate-float" style={{ animationDelay: '0.6s' }}>7</div>
                 <div className="text-sm text-muted-foreground">Day Streak</div>
               </CardContent>
             </Card>
             
-            <Card className="text-center shadow-soft border-0 bg-card">
+            <Card className="text-center shadow-floating border-0 bg-gradient-card hover:-translate-y-1 transition-all duration-300 animate-scale-in" style={{ animationDelay: '0.3s' }}>
               <CardContent className="pt-6">
-                <div className="text-3xl font-bold mb-2 text-primary">3</div>
+                <div className="text-3xl font-bold mb-2 text-primary animate-float" style={{ animationDelay: '0.9s' }}>3</div>
                 <div className="text-sm text-muted-foreground">Active Projects</div>
               </CardContent>
             </Card>

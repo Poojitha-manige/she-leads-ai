@@ -64,8 +64,13 @@ const features = [
 
 export const FeatureGrid = () => {
   return (
-    <section className="py-24 bg-background">
-      <div className="container mx-auto px-4">
+    <section className="py-24 bg-gradient-subtle relative overflow-hidden">
+      {/* Professional background elements */}
+      <div className="absolute top-0 left-0 w-full h-full bg-overlay-section" />
+      <div className="absolute top-20 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
+      <div className="absolute bottom-0 left-0 w-80 h-80 bg-secondary/5 rounded-full blur-3xl" />
+      
+      <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-primary bg-clip-text text-transparent">
             Powerful Features for Your Growth
@@ -79,14 +84,14 @@ export const FeatureGrid = () => {
           {features.map((feature, index) => {
             const IconComponent = feature.icon;
             return (
-              <Card key={index} className="group hover:shadow-soft transition-all duration-300 hover:-translate-y-1 border-0 shadow-soft">
+              <Card key={index} className="group hover:shadow-floating transition-all duration-500 hover:-translate-y-2 border-0 shadow-elegant bg-gradient-card backdrop-blur-sm animate-fade-in" style={{ animationDelay: `${index * 0.1}s` }}>
                 <CardHeader className="text-center pb-4">
-                  <div className={`inline-flex items-center justify-center w-16 h-16 rounded-2xl mx-auto mb-4 ${
-                    feature.color === 'primary' ? 'bg-gradient-primary' :
-                    feature.color === 'secondary' ? 'bg-gradient-success' :
-                    'bg-gradient-to-br from-accent to-yellow-400'
+                  <div className={`inline-flex items-center justify-center w-16 h-16 rounded-2xl mx-auto mb-4 transition-transform duration-300 group-hover:scale-110 ${
+                    feature.color === 'primary' ? 'bg-gradient-primary shadow-empowerment' :
+                    feature.color === 'secondary' ? 'bg-gradient-success shadow-success' :
+                    'bg-gradient-to-br from-accent to-yellow-400 shadow-elegant'
                   }`}>
-                    <IconComponent className="h-8 w-8 text-white" />
+                    <IconComponent className="h-8 w-8 text-white group-hover:animate-float" />
                   </div>
                   <CardTitle className="text-lg font-semibold group-hover:text-primary transition-colors">
                     {feature.title}
