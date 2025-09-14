@@ -17,17 +17,32 @@ All colors MUST be HSL.
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
 
-    --primary: 222.2 47.4% 11.2%;
+    --primary: 262 83% 58%;
     --primary-foreground: 210 40% 98%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 152 69% 35%;
+    --secondary-foreground: 210 40% 98%;
 
     --muted: 210 40% 96.1%;
     --muted-foreground: 215.4 16.3% 46.9%;
 
-    --accent: 210 40% 96.1%;
+    --accent: 43 96% 56%;
     --accent-foreground: 222.2 47.4% 11.2%;
+
+    /* Empowerment gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(262 83% 68%));
+    --gradient-success: linear-gradient(135deg, hsl(var(--secondary)), hsl(152 69% 45%));
+    --gradient-hero: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--secondary)));
+    
+    /* Achievement colors */
+    --achievement-bronze: 30 100% 50%;
+    --achievement-silver: 0 0% 75%;
+    --achievement-gold: 43 96% 56%;
+    
+    /* Shadows */
+    --shadow-empowerment: 0 10px 30px -10px hsl(var(--primary) / 0.3);
+    --shadow-success: 0 8px 24px -8px hsl(var(--secondary) / 0.25);
+    --shadow-soft: 0 4px 16px -4px hsl(222.2 84% 4.9% / 0.1);
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
