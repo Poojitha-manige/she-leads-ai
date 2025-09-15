@@ -1,9 +1,21 @@
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { Badge } from "@/components/ui/badge";
-import { Star, Trophy, Target, Book, Users } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Star, Trophy, Target, Book, Users, ChevronRight } from "lucide-react";
 
 export const ProgressDashboard = () => {
+  const navigate = useNavigate();
+  const [activeSkill, setActiveSkill] = useState("Tailoring & Stitching");
+  
+  const skillsProgress = {
+    "Tailoring & Stitching": 78,
+    "Organic Farming": 45,
+    "Handicrafts": 92,
+  };
+
   return (
     <section className="py-24 bg-gradient-subtle relative overflow-hidden">
       {/* Professional background pattern */}
@@ -60,6 +72,24 @@ export const ProgressDashboard = () => {
                     <Progress value={45} className="h-2" />
                   </div>
                 </div>
+                
+                <div className="mt-6 flex gap-4">
+                  <Button 
+                    variant="empowerment" 
+                    size="sm"
+                    onClick={() => navigate("/skills")}
+                  >
+                    Continue Learning
+                    <ChevronRight className="ml-2 h-4 w-4" />
+                  </Button>
+                  <Button 
+                    variant="outline" 
+                    size="sm"
+                    onClick={() => navigate("/voice-mode")}
+                  >
+                    Try Voice Mode
+                  </Button>
+                </div>
               </CardContent>
             </Card>
 
@@ -94,8 +124,18 @@ export const ProgressDashboard = () => {
                     <div>
                       <p className="font-medium">Community Member</p>
                       <p className="text-sm text-muted-foreground">Joined local group</p>
-                    </div>
                   </div>
+                </div>
+                
+                <div className="mt-6">
+                  <Button 
+                    variant="outline" 
+                    className="w-full"
+                    onClick={() => navigate("/skills")}
+                  >
+                    View All Achievements
+                  </Button>
+                </div>
                 </div>
               </CardContent>
             </Card>

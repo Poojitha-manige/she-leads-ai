@@ -1,5 +1,8 @@
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { SkillModal } from "./SkillModal";
 import { 
   Scissors, 
   Sprout, 
@@ -47,6 +50,20 @@ const categories = [
 ];
 
 export const LearningCategories = () => {
+  const navigate = useNavigate();
+  const [selectedSkill, setSelectedSkill] = useState<any>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleSkillClick = (category: any) => {
+    setSelectedSkill(category);
+    setIsModalOpen(true);
+  };
+
+  const handleStartLearning = () => {
+    setIsModalOpen(false);
+    navigate("/skills");
+  };
+
   return (
     <section className="py-24 bg-gradient-professional relative overflow-hidden">
       {/* Professional background elements */}
@@ -95,8 +112,9 @@ export const LearningCategories = () => {
                   <Button 
                     variant="empowerment" 
                     className="w-full rounded-xl font-semibold transition-all duration-300 group-hover:shadow-empowerment"
+                    onClick={() => handleSkillClick(category)}
                   >
-                    Start Learning Now
+                    Learn More
                   </Button>
                 </CardContent>
               </Card>
@@ -105,11 +123,22 @@ export const LearningCategories = () => {
         </div>
         
         <div className="text-center mt-16">
-          <Button variant="outline" size="lg" className="text-lg px-8 py-4 rounded-2xl border-primary/20 hover:bg-primary/5">
+          <Button 
+            variant="outline" 
+            size="lg" 
+            className="text-lg px-8 py-4 rounded-2xl border-primary/20 hover:bg-primary/5"
+            onClick={() => navigate("/skills")}
+          >
             Browse All Skills
           </Button>
         </div>
       </div>
+      
+      <SkillModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        skill={selectedSkill}
+      />
     </section>
   );
 };

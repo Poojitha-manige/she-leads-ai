@@ -1,8 +1,12 @@
+import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Play, Mic, Target } from "lucide-react";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Mic, Brain, TrendingUp } from "lucide-react";
 import heroImage from "@/assets/hero-empowerment.jpg";
 
 export const HeroSection = () => {
+  const navigate = useNavigate();
+
   return (
     <section className="relative min-h-screen flex items-center justify-center bg-gradient-hero overflow-hidden">
       {/* Professional layered background */}
@@ -31,33 +35,40 @@ export const HeroSection = () => {
             micro-loan matching, and market connections for rural women entrepreneurs.
           </p>
           
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
-            <Button variant="hero" size="lg" className="text-lg px-8 py-4 rounded-2xl">
-              <Play className="mr-2 h-5 w-5" />
+          <div className="flex flex-col sm:flex-row gap-6 justify-center">
+            <Button 
+              variant="hero" 
+              size="lg" 
+              className="text-lg px-8 py-4 rounded-2xl font-semibold"
+              onClick={() => navigate("/skills")}
+            >
               Start Learning Now
             </Button>
-            
-            <Button variant="outline" size="lg" className="text-lg px-8 py-4 rounded-2xl border-white/30 text-white hover:bg-white/10">
-              <Mic className="mr-2 h-5 w-5" />
+            <Button 
+              variant="outline" 
+              size="lg" 
+              className="text-lg px-8 py-4 rounded-2xl border-white/20 hover:bg-white/10 text-white"
+              onClick={() => navigate("/voice-mode")}
+            >
               Try Voice Mode
             </Button>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
             <div className="bg-white/8 backdrop-blur-lg rounded-2xl p-6 border border-white/10 hover:bg-white/12 transition-all duration-300 hover:-translate-y-1 shadow-floating">
-              <Target className="h-12 w-12 mx-auto mb-4 text-accent animate-float" />
+              <Mic className="h-12 w-12 mx-auto mb-4 text-accent animate-float" />
               <h3 className="text-xl font-semibold mb-2">Voice Learning</h3>
               <p className="text-white/80">Hands-free tutorials in your local language</p>
             </div>
             
             <div className="bg-white/8 backdrop-blur-lg rounded-2xl p-6 border border-white/10 hover:bg-white/12 transition-all duration-300 hover:-translate-y-1 shadow-floating" style={{ animationDelay: '0.2s' }}>
-              <Target className="h-12 w-12 mx-auto mb-4 text-accent animate-float" style={{ animationDelay: '0.5s' }} />
+              <Brain className="h-12 w-12 mx-auto mb-4 text-accent animate-float" style={{ animationDelay: '0.5s' }} />
               <h3 className="text-xl font-semibold mb-2">Smart Guidance</h3>
               <p className="text-white/80">AI chatbot answers your questions instantly</p>
             </div>
             
             <div className="bg-white/8 backdrop-blur-lg rounded-2xl p-6 border border-white/10 hover:bg-white/12 transition-all duration-300 hover:-translate-y-1 shadow-floating" style={{ animationDelay: '0.4s' }}>
-              <Target className="h-12 w-12 mx-auto mb-4 text-accent animate-float" style={{ animationDelay: '1s' }} />
+              <TrendingUp className="h-12 w-12 mx-auto mb-4 text-accent animate-float" style={{ animationDelay: '1s' }} />
               <h3 className="text-xl font-semibold mb-2">Market Connect</h3>
               <p className="text-white/80">Link to buyers and cooperatives near you</p>
             </div>

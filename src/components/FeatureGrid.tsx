@@ -1,4 +1,5 @@
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { useNavigate } from "react-router-dom";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { 
   Mic, 
@@ -63,6 +64,8 @@ const features = [
 ];
 
 export const FeatureGrid = () => {
+  const navigate = useNavigate();
+
   return (
     <section className="py-24 bg-gradient-subtle relative overflow-hidden">
       {/* Professional background elements */}
@@ -98,17 +101,22 @@ export const FeatureGrid = () => {
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="pt-0">
-                  <CardDescription className="text-center text-muted-foreground leading-relaxed">
+                  <p className="text-center text-muted-foreground leading-relaxed">
                     {feature.description}
-                  </CardDescription>
+                  </p>
                 </CardContent>
               </Card>
             );
           })}
         </div>
         
-        <div className="text-center mt-12">
-          <Button variant="empowerment" size="lg" className="text-lg px-8 py-4 rounded-2xl">
+        <div className="text-center mt-16">
+          <Button 
+            variant="outline" 
+            size="lg" 
+            className="text-lg px-8 py-4 rounded-2xl border-primary/20 hover:bg-primary/5"
+            onClick={() => navigate("/features")}
+          >
             Explore All Features
           </Button>
         </div>
