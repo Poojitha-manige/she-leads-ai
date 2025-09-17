@@ -6,6 +6,7 @@ import { Progress } from "@/components/ui/progress";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { ArrowLeft, PlayCircle, CheckCircle, Clock, Award } from "lucide-react";
+import { useToast } from "@/hooks/use-toast";
 
 const skillsData = [
   {
@@ -30,7 +31,22 @@ const skillsData = [
 
 const Skills = () => {
   const navigate = useNavigate();
+  const { toast } = useToast();
   const [selectedSkill, setSelectedSkill] = useState(skillsData[0]);
+
+  const handleModuleAction = (moduleName: string, action: string) => {
+    toast({
+      title: `${action} Module`,
+      description: `You've started ${action.toLowerCase()}ing the ${moduleName} module.`,
+    });
+  };
+
+  const handleStartNewSkill = (skillName: string) => {
+    toast({
+      title: "New Skill Started!",
+      description: `Welcome to ${skillName}! Your learning journey has begun.`,
+    });
+  };
 
   return (
     <div className="min-h-screen bg-gradient-professional">
@@ -131,6 +147,7 @@ const Skills = () => {
                           size="sm"
                           variant={module.progress > 0 ? "empowerment" : "outline"}
                           className="w-full"
+                          onClick={() => handleModuleAction(module.name, module.completed ? "Review" : module.progress > 0 ? "Continue" : "Start")}
                         >
                           {module.completed ? "Review" : module.progress > 0 ? "Continue" : "Start"}
                         </Button>
@@ -170,7 +187,11 @@ const Skills = () => {
                     <p className="text-sm text-muted-foreground mb-4">
                       {skill.modules} modules available
                     </p>
-                    <Button variant="empowerment" className="w-full">
+                    <Button 
+                      variant="empowerment" 
+                      className="w-full"
+                      onClick={() => handleStartNewSkill(skill.name)}
+                    >
                       Start Learning
                     </Button>
                   </CardContent>

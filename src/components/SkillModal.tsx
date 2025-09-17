@@ -3,6 +3,8 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { Clock, Users, Award, PlayCircle } from "lucide-react";
+import { useNavigate } from "react-router-dom";
+import { useToast } from "@/hooks/use-toast";
 
 interface SkillModalProps {
   isOpen: boolean;
@@ -45,10 +47,30 @@ const skillDetails = {
 };
 
 export const SkillModal = ({ isOpen, onClose, skill }: SkillModalProps) => {
+  const navigate = useNavigate();
+  const { toast } = useToast();
+  
   if (!skill) return null;
 
   const details = skillDetails[skill.title as keyof typeof skillDetails];
   const IconComponent = skill.icon;
+
+  const handleStartLearning = () => {
+    onClose();
+    navigate("/skills");
+    toast({
+      title: "Welcome to your learning journey!",
+      description: `You've started learning ${skill.title}. Check your progress in the Skills section.`,
+    });
+  };
+
+  const handleSaveForLater = () => {
+    onClose();
+    toast({
+      title: "Skill saved!",
+      description: `${skill.title} has been added to your saved skills list.`,
+    });
+  };
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
@@ -162,10 +184,10 @@ export const SkillModal = ({ isOpen, onClose, skill }: SkillModalProps) => {
           </div>
 
           <div className="flex gap-4 pt-4">
-            <Button variant="empowerment" className="flex-1" onClick={onClose}>
+            <Button variant="empowerment" className="flex-1" onClick={handleStartLearning}>
               Start Learning Now
             </Button>
-            <Button variant="outline" onClick={onClose}>
+            <Button variant="outline" onClick={handleSaveForLater}>
               Save for Later
             </Button>
           </div>
