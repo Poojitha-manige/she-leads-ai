@@ -5,15 +5,49 @@ import { Progress } from "@/components/ui/progress";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Star, Trophy, Target, Book, Users, ChevronRight } from "lucide-react";
+import { useToast } from "@/hooks/use-toast";
 
 export const ProgressDashboard = () => {
   const navigate = useNavigate();
+  const { toast } = useToast();
   const [activeSkill, setActiveSkill] = useState("Tailoring & Stitching");
   
   const skillsProgress = {
     "Tailoring & Stitching": 78,
     "Organic Farming": 45,
     "Handicrafts": 92,
+  };
+
+  const handleStatClick = (statType: string) => {
+    switch (statType) {
+      case "lessons":
+        navigate("/skills");
+        toast({
+          title: "Lessons Overview",
+          description: "View all your completed lessons in the Skills section.",
+        });
+        break;
+      case "earnings":
+        toast({
+          title: "Earnings Tracker",
+          description: "₹2,340 earned from your handmade products! Keep up the great work!",
+        });
+        break;
+      case "streak":
+        toast({
+          title: "Learning Streak",
+          description: "7 days in a row! Consistency is key to mastering new skills.",
+        });
+        break;
+      case "projects":
+        toast({
+          title: "Active Projects",
+          description: "You have 3 projects in progress. Focus on completing them one by one.",
+        });
+        break;
+      default:
+        break;
+    }
   };
 
   return (
@@ -143,28 +177,43 @@ export const ProgressDashboard = () => {
 
           {/* Quick Stats */}
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-            <Card className="text-center shadow-floating border-0 bg-gradient-primary text-white hover:-translate-y-1 transition-all duration-300 animate-scale-in">
+            <Card 
+              className="text-center shadow-floating border-0 bg-gradient-primary text-white hover:-translate-y-1 transition-all duration-300 animate-scale-in cursor-pointer"
+              onClick={() => handleStatClick("lessons")}
+            >
               <CardContent className="pt-6">
                 <div className="text-3xl font-bold mb-2 animate-float">15</div>
                 <div className="text-sm opacity-90">Lessons Completed</div>
               </CardContent>
             </Card>
             
-            <Card className="text-center shadow-floating border-0 bg-gradient-success text-white hover:-translate-y-1 transition-all duration-300 animate-scale-in" style={{ animationDelay: '0.1s' }}>
+            <Card 
+              className="text-center shadow-floating border-0 bg-gradient-success text-white hover:-translate-y-1 transition-all duration-300 animate-scale-in cursor-pointer" 
+              style={{ animationDelay: '0.1s' }}
+              onClick={() => handleStatClick("earnings")}
+            >
               <CardContent className="pt-6">
                 <div className="text-3xl font-bold mb-2 animate-float" style={{ animationDelay: '0.3s' }}>₹2,340</div>
                 <div className="text-sm opacity-90">Total Earnings</div>
               </CardContent>
             </Card>
             
-            <Card className="text-center shadow-floating border-0 bg-gradient-card hover:-translate-y-1 transition-all duration-300 animate-scale-in" style={{ animationDelay: '0.2s' }}>
+            <Card 
+              className="text-center shadow-floating border-0 bg-gradient-card hover:-translate-y-1 transition-all duration-300 animate-scale-in cursor-pointer" 
+              style={{ animationDelay: '0.2s' }}
+              onClick={() => handleStatClick("streak")}
+            >
               <CardContent className="pt-6">
                 <div className="text-3xl font-bold mb-2 text-accent animate-float" style={{ animationDelay: '0.6s' }}>7</div>
                 <div className="text-sm text-muted-foreground">Day Streak</div>
               </CardContent>
             </Card>
             
-            <Card className="text-center shadow-floating border-0 bg-gradient-card hover:-translate-y-1 transition-all duration-300 animate-scale-in" style={{ animationDelay: '0.3s' }}>
+            <Card 
+              className="text-center shadow-floating border-0 bg-gradient-card hover:-translate-y-1 transition-all duration-300 animate-scale-in cursor-pointer" 
+              style={{ animationDelay: '0.3s' }}
+              onClick={() => handleStatClick("projects")}
+            >
               <CardContent className="pt-6">
                 <div className="text-3xl font-bold mb-2 text-primary animate-float" style={{ animationDelay: '0.9s' }}>3</div>
                 <div className="text-sm text-muted-foreground">Active Projects</div>

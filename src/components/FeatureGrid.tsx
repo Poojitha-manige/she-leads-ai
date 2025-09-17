@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { useToast } from "@/hooks/use-toast";
 import { 
   Mic, 
   MessageCircle, 
@@ -17,54 +18,112 @@ const features = [
     icon: Mic,
     title: "Voice Learning",
     description: "Hands-free tutorials in local languages for easy understanding and accessibility.",
-    color: "primary"
+    color: "primary",
+    action: "voice-mode"
   },
   {
     icon: MessageCircle,
     title: "Smart Chatbot",
     description: "AI-powered guidance that answers questions instantly with friendly support.",
-    color: "secondary"
+    color: "secondary",
+    action: "chatbot"
   },
   {
     icon: TrendingUp,
     title: "Skill Tracker",
     description: "Monitor learning progress and unlock new levels as you improve your skills.",
-    color: "accent"
+    color: "accent",
+    action: "skills"
   },
   {
     icon: DollarSign,
     title: "Loan Finder",
     description: "Discover suitable micro-loans and financial schemes based on your goals.",
-    color: "primary"
+    color: "primary",
+    action: "loans"
   },
   {
     icon: Users,
     title: "Market Connect",
     description: "Connect with local buyers, cooperatives, and online selling platforms.",
-    color: "secondary"
+    color: "secondary",
+    action: "marketplace"
   },
   {
     icon: Package,
     title: "Product Helper",
     description: "Generate pricing tips and compelling product descriptions to boost sales.",
-    color: "accent"
+    color: "accent",
+    action: "product-helper"
   },
   {
     icon: Award,
     title: "Badge Rewards",
     description: "Earn achievement badges for completed modules and celebrate your progress.",
-    color: "primary"
+    color: "primary",
+    action: "achievements"
   },
   {
     icon: Wifi,
     title: "Offline Mode",
     description: "Learn without internet connection and sync progress when reconnected.",
-    color: "secondary"
+    color: "secondary",
+    action: "offline"
   }
 ];
 
 export const FeatureGrid = () => {
   const navigate = useNavigate();
+  const { toast } = useToast();
+
+  const handleFeatureClick = (feature: any) => {
+    switch (feature.action) {
+      case "voice-mode":
+        navigate("/voice-mode");
+        break;
+      case "skills":
+        navigate("/skills");
+        break;
+      case "chatbot":
+        navigate("/chatbot");
+        break;
+      case "loans":
+        toast({
+          title: "Loan Finder Activated",
+          description: "Searching for micro-loans and financial schemes in your area...",
+        });
+        break;
+      case "marketplace":
+        toast({
+          title: "Market Connect",
+          description: "Connecting you with local buyers and cooperatives...",
+        });
+        break;
+      case "product-helper":
+        toast({
+          title: "Product Helper",
+          description: "AI-powered product description and pricing tools activated!",
+        });
+        break;
+      case "achievements":
+        navigate("/skills");
+        setTimeout(() => {
+          toast({
+            title: "Achievement System",
+            description: "View your badges and achievements in the Skills section!",
+          });
+        }, 100);
+        break;
+      case "offline":
+        toast({
+          title: "Offline Mode",
+          description: "Offline learning capabilities are being prepared for your device.",
+        });
+        break;
+      default:
+        navigate("/features");
+    }
+  };
 
   return (
     <section className="py-24 bg-gradient-subtle relative overflow-hidden">
@@ -87,7 +146,12 @@ export const FeatureGrid = () => {
           {features.map((feature, index) => {
             const IconComponent = feature.icon;
             return (
-              <Card key={index} className="group hover:shadow-floating transition-all duration-500 hover:-translate-y-2 border-0 shadow-elegant bg-gradient-card backdrop-blur-sm animate-fade-in" style={{ animationDelay: `${index * 0.1}s` }}>
+              <Card 
+                key={index} 
+                className="group hover:shadow-floating transition-all duration-500 hover:-translate-y-2 border-0 shadow-elegant bg-gradient-card backdrop-blur-sm animate-fade-in cursor-pointer" 
+                style={{ animationDelay: `${index * 0.1}s` }}
+                onClick={() => handleFeatureClick(feature)}
+              >
                 <CardHeader className="text-center pb-4">
                   <div className={`inline-flex items-center justify-center w-16 h-16 rounded-2xl mx-auto mb-4 transition-transform duration-300 group-hover:scale-110 ${
                     feature.color === 'primary' ? 'bg-gradient-primary shadow-empowerment' :

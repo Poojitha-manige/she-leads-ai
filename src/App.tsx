@@ -7,6 +7,7 @@ import Index from "./pages/Index";
 import Skills from "./pages/Skills";
 import VoiceMode from "./pages/VoiceMode";
 import Features from "./pages/Features";
+import Chatbot from "./pages/Chatbot";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -22,6 +23,7 @@ const App = () => (
           <Route path="/skills" element={<Skills />} />
           <Route path="/voice-mode" element={<VoiceMode />} />
           <Route path="/features" element={<Features />} />
+          <Route path="/chatbot" element={<Chatbot />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
