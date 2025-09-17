@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { ArrowLeft, Mic, Brain, TrendingUp, DollarSign, Users, ShoppingBag, Award, Wifi } from "lucide-react";
+import { useToast } from "@/hooks/use-toast";
 
 const allFeatures = [
   {
@@ -65,6 +66,27 @@ const allFeatures = [
 
 const Features = () => {
   const navigate = useNavigate();
+  const { toast } = useToast();
+
+  const handleFeatureAction = (feature: any) => {
+    if (feature.status === "active") {
+      if (feature.title === "Voice Learning") {
+        navigate("/voice-mode");
+      } else if (feature.title === "Skill Tracker") {
+        navigate("/skills");
+      } else {
+        toast({
+          title: `${feature.title} Activated`,
+          description: `Welcome to ${feature.title}! This feature is now active.`,
+        });
+      }
+    } else if (feature.status === "beta") {
+      toast({
+        title: `Joined ${feature.title} Beta`,
+        description: `You've been added to the beta testing program for ${feature.title}.`,
+      });
+    }
+  };
 
   const getStatusBadge = (status: string) => {
     switch (status) {
@@ -136,6 +158,7 @@ const Features = () => {
                     variant={feature.status === "active" ? "empowerment" : "outline"} 
                     className="w-full rounded-xl font-semibold transition-all duration-300"
                     disabled={feature.status === "coming-soon"}
+                    onClick={() => handleFeatureAction(feature)}
                   >
                     {feature.status === "active" ? "Try Now" : 
                      feature.status === "beta" ? "Join Beta" : "Coming Soon"}

@@ -1,4 +1,4 @@
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
@@ -82,6 +82,9 @@ export const SkillModal = ({ isOpen, onClose, skill }: SkillModalProps) => {
             </div>
             <div>
               <DialogTitle className="text-2xl font-bold">{skill.title}</DialogTitle>
+              <DialogDescription className="mt-1">
+                Learn {skill.title} with interactive modules and voice-guided tutorials
+              </DialogDescription>
               <div className="flex gap-2 mt-2">
                 <Badge className="bg-gradient-success text-white">{skill.duration}</Badge>
                 <Badge variant="secondary">{skill.level}</Badge>
